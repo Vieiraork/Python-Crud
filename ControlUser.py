@@ -18,8 +18,6 @@ Menu de opções, digite uma das opções:
         print('-=-' * 15)
 
     def registrar(self, nick, senha):
-        print(nick)
-        print(senha)
         mycursor.execute('INSERT INTO login(nick, senha) VALUES(?, ?)', (nick, senha))
         conect.commit()
 
