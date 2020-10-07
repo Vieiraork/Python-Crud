@@ -34,8 +34,10 @@ Menu de opções, digite uma das opções:
 
     def listar(self):
         mycursor.execute('SELECT * FROM login')
+
         print('ID      Nick     Senha')
         print('-' * 25)
+
         for d in mycursor:
             print(f'{d[0]}    {d[1]}    {d[2]}')
             print('-' * 25)
