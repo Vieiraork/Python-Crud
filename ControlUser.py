@@ -8,7 +8,6 @@ class ControlUser:
     def __init__(self):
         pass
 
-
     def opcoes(self):
         print('''\033[1;30m    
 Menu de opções, digite uma das opções:
@@ -27,7 +26,8 @@ Menu de opções, digite uma das opções:
         novon = str(input('Digite o novo nick: '))
         novas = str(input('Digite a nova senha: '))
 
-        mycursor.execute('UPDATE login SET nick = ?, senha = ? WHERE nick = ? AND senha = ?', (novon, novas, nick, senha))
+        mycursor.execute('UPDATE login SET nick = ?, senha = ? WHERE nick = ? AND senha = ?',
+                         (novon, novas, nick, senha))
         conect.commit()
 
     def apagar(self, nick, senha):
