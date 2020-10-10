@@ -8,13 +8,15 @@ class ControlUser:
     def __init__(self):
         pass
 
+
     def opcoes(self):
         print('''\033[1;30m    
 Menu de opções, digite uma das opções:
     1 - REGISTRAR
     2 - ALTERAR
     3 - APAGAR
-    4 - LISTAR''')
+    4 - LISTAR
+    5 - SAIR''')
         print('-=-' * 15)
 
     def registrar(self, nick, senha):
@@ -35,9 +37,10 @@ Menu de opções, digite uma das opções:
     def listar(self):
         mycursor.execute('SELECT * FROM login')
 
-        print('ID      Nick     Senha')
-        print('-' * 25)
+        print(f'{"ID":^20}    {"Nick":^20}     {"Senha":^20}')
+        print('-' * 50)
 
         for d in mycursor:
-            print(f'{d[0]}    {d[1]}    {d[2]}')
+            print(f'{str(d[0]):^20}    {str(d[1]):^20}     {str(d[2]):^20} ')
             print('-' * 25)
+            #
