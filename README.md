@@ -1,6 +1,9 @@
 # Python-CRUD ![Python CI](https://github.com/WilliamVie/Python-Crud/workflows/Python%20CI/badge.svg) [![license-badge]][license]
 My first CRUD application using Python 3.
 
+## Languages
+![python-language-badge] ![sqlite-language-badge]
+
 ## About
 This is my first CRUD application using OOP. If you willing to help us, must follow steps below:
 1. Verify if the database file exists on project (this is automatically checked by [`connection::setup()`][ref-1], otherwise must run file [`connection.py`][ref-2] once
@@ -8,9 +11,6 @@ This is my first CRUD application using OOP. If you willing to help us, must fol
 1. We are using Python 3.8.2 and native SQLite version
 
 Thanks for testing :smirk:
-
-## Languages
-![python-language-badge] ![sqlite-language-badge]
 
 ### Contributors
 - William ~ [@WilliamVie][william-ref]
