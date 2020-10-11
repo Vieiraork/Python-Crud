@@ -6,8 +6,8 @@ My first CRUD application using Python 3.
 
 ## About
 This is my first CRUD application using OOP. If you willing to help us, must follow steps below:
-1. Verify if the database file exists on project (this is automatically checked by [`connection::setup()`][ref-1], otherwise must run file [`connection.py`][ref-2] once
-1. Execute the batch file [`python_executor.bat`][ref-3] or via terminal type `python main.py`
+1. Verify if the database file exists on project (this is automatically checked by [`connection::setup()`][ref-1] method)
+1. Execute the batch file [`python_executor.bat`][ref-2] or via terminal type `python main.py`
 1. We are using Python 3.8.2 and native SQLite version
 
 Thanks for testing :smirk:
@@ -26,5 +26,4 @@ Thanks for testing :smirk:
 [license]: /LICENSE
 
 [ref-1]: /src/connection.py#L7
-[ref-2]: /src/connection.py
-[ref-3]: /src/python_executor.bat
+[ref-2]: /src/python_executor.bat
