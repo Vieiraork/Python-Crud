@@ -4,6 +4,7 @@ on:
   push:
     paths-ignore:
       - '**.db'
+      - '**.md'
       - '.idead/**'
       - '.github/workflows/**'
     branches:
@@ -11,6 +12,7 @@ on:
   pull_request:
     paths-ignore:
       - '**.db'
+      - '**.md'
       - '.idead/**'
       - '.github/workflows/**'
     branches:
