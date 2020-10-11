@@ -1,7 +1,7 @@
 from os import name, system
 from time import sleep
 
-from ControlUser import ControlUser
+from user_controller import ControlUser
 from config import Configs
 
 

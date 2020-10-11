@@ -1,4 +1,4 @@
-from ControlUser import ControlUser
+from user_controller import ControlUser
 from connection import setup
 from crud_controller import CrudController
 
