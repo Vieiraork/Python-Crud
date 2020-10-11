@@ -1,16 +1,53 @@
-import _sqlite3
+from _sqlite3 import connect
+from os import path
 
-conect = _sqlite3.connect('user.db')
-cursor = conect.cursor()
+from config import Configs
 
-cursor.execute('DROP TABLE login')
-cursor.execute('CREATE TABLE login(id INTEGER PRIMARY KEY AUTOINCREMENT, nick VARCHAR(20) UNIQUE, senha VARCHAR(15))')
-# CREATE TABLE login(id INTEGER PRIMARY KEY AUTOINCREMENT, nick VARCHAR(20) UNIQUE, senha VARCHAR(15))
 
-cursor.execute('INSERT INTO login(nick, senha) VALUES(?, ?)', ('Homem', '123456'))
-cursor.execute('INSERT INTO login(nick, senha) VALUES(?, ?)', ('Mulher', '123456'))
+def setup() -> type(None):
+    # check auto_create option
+    db_config = Configs['db_config']
+    if not db_config['auto_create']:
+        return
 
-conect.commit()
+    res = db_config['name']
+    drop_db = False
 
-cursor.close()
-conect.close()
+    # enable drop action when file exists only
+    if path.exists(res):
+        print("Database resource already exists.")
+        drop_db = input("Do you want to DROP it or keep? (Y/N) [default: NO] ").lower() == "y"
+
+    if not drop_db:
+        print("Success! Using local configuration.")
+        return
+
+    conn = connect(res)
+    cur = conn.cursor()
+
+    # accurate drop action
+    cur.execute("DROP TABLE login")
+    print("Disposing database data...")
+
+    # create tables
+    print("Creating schema...")
+    for table_def in db_config['schema']:
+        # create table
+        cur.execute(table_def[0])
+
+        # verify and add samples
+        if db_config['add_samples'] \
+                and not table_def[1] is None \
+                and len(table_def[1]) > 0:
+            for table_sample in table_def[1]:
+                cur.execute(
+                    table_sample[0],
+                    None if table_sample[1] is None else table_sample[1]
+                )
+
+    print("Changes have been committed!")
+    conn.commit()
+
+    cur.close()
+    conn.close()
+    print("Successfully created a new database schema!")

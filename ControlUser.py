@@ -8,7 +8,7 @@ class ControlUser:
     def __init__(self):
         pass
 
-    def opcoes(self):
+    def show_menu_options(self):
         print('''\033[1;30m    
 Menu de opções, digite uma das opções:
     1 - REGISTRAR
@@ -18,11 +18,11 @@ Menu de opções, digite uma das opções:
     5 - SAIR''')
         print('-=-' * 15)
 
-    def registrar(self, nick, senha):
+    def register(self, nick, senha):
         mycursor.execute('INSERT INTO login(nick, senha) VALUES(?, ?)', (nick, senha))
         conect.commit()
 
-    def alterar(self, nick, senha):
+    def update(self, nick, senha):
         novon = str(input('Digite o novo nick: '))
         novas = str(input('Digite a nova senha: '))
 
@@ -30,11 +30,11 @@ Menu de opções, digite uma das opções:
                          (novon, novas, nick, senha))
         conect.commit()
 
-    def apagar(self, nick, senha):
+    def delete(self, nick, senha):
         mycursor.execute('DELETE FROM login WHERE nick = ? AND senha = ?', (nick, senha))
         conect.commit()
 
-    def listar(self):
+    def display(self):
         mycursor.execute('SELECT * FROM login')
 
         print(f'{"ID":^20}    {"Nick":^20}     {"Senha":^20}')
