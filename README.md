@@ -25,6 +25,6 @@ Thanks for testing :smirk:
 [license-badge]: https://img.shields.io/badge/MIT-gray?style=plastic
 [license]: /LICENSE
 
-[ref-1]: /connection.py#L7
-[ref-2]: /connection.py
-[ref-3]: /python_executor.bat
+[ref-1]: /src/connection.py#L7
+[ref-2]: /src/connection.py
+[ref-3]: /src/python_executor.bat
