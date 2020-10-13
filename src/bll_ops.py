@@ -37,16 +37,18 @@ class BLLOps:
         )
 
     def register(self, nick_: str, pass_: str) -> type(None):
+        cur = self._conn.cursor()
         try:
             cur.execute(
                 sql='INSERT INTO login(nick, password) VALUES(?, ?)',
                 parameters=(nick_, pass_)
             )
-        except Error:
-            self._logger.error(msg='Nick unavailable, try again.')
-        else:
             self._logger.info(msg='Successful, user register!')
             self._conn.commit()
+        except Error:
+            self._logger.error(msg='Nick unavailable, try again.')
+        finally:
+            cur.close()
 
     def update(self, nick_: str, pass_: str) -> type(None):
         self._logger.info(msg="Insert a new nickname:")
