@@ -1,12 +1,25 @@
-from user_controller import ControlUser
-from connection import setup
-from crud_controller import CrudController
+from bll_ops import BLLOps
+from input_controller import InputController
+from py_logger import PyLogger
+from sqlite3_engine import establish_connection
 
 if __name__ == '__main__':
-    setup()
+    # setup PyLogger + terminal dependencies
+    logger = PyLogger()
+    logger.setup()
 
-    ctrl_usr = ControlUser()
-    controller = CrudController()
-    controller.handler(ctrl_usr)
+    # setup sqlite3 storage engine and create connection
+    conn = establish_connection(logger=logger)
 
-    exit(0)
+    # include BLL operations
+    bll_ops = BLLOps(logger=logger, conn=conn)
+
+    # configure input controller and internal handlers
+    controller = InputController(bll_ops=bll_ops, logger=logger)
+    controller.handler()
+
+    # close connection with database
+    conn.close()
+
+    # stop running process
+    exit(code=0)
