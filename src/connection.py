@@ -7,6 +7,7 @@ from config import Configs
 def setup() -> type(None):
     # check auto_create option
     db_config = Configs['db_config']
+    colors = Configs['colors']
     if not db_config['auto_create']:
         return
 
@@ -15,8 +16,8 @@ def setup() -> type(None):
 
     # enable drop action when file exists only
     if path.exists(res):
-        print("Database resource already exists.")
-        drop_db = input("Do you want to DROP it or keep? (Y/N) [default: NO] ").lower() == "y"
+        print(f'{colors["white"]}Database resource already exists.')
+        drop_db = input("Do you want to DROP it or keep? (Y/N) [default: NO] ").lower()[0] == "y"
 
     if not drop_db:
         print("Success! Using local configuration.")
@@ -45,7 +46,7 @@ def setup() -> type(None):
                     None if table_sample[1] is None else table_sample[1]
                 )
 
-    print("Changes have been committed!")
+    print(f"{colors['green']}Changes have been committed!")
     conn.commit()
 
     cur.close()
