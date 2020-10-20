@@ -39,10 +39,10 @@ class BLLOps:
     def register(self, nick_: str, pass_: str) -> type(None):
         cur = self._conn.cursor()
         try:
-            cur.execute(
-                sql='INSERT INTO login(nick, password) VALUES(?, ?)',
-                parameters=(nick_, pass_)
-            )
+            sql = 'INSERT INTO login(nick, password) VALUES(?, ?)'
+            parameters = (nick_, pass_)
+            cur.execute(sql, parameters)
+
             self._logger.info(msg='Successful, user register!')
             self._conn.commit()
         except Error:
@@ -59,10 +59,10 @@ class BLLOps:
 
         cur = self._conn.cursor()
         try:
-            cur.execute(
-                sql='UPDATE login SET nick = ?, password = ? WHERE nick = ? AND password = ?',
-                parameters=(new_nick, new_pass, nick_, pass_)
-            )
+            sql = 'UPDATE login SET nick = ?, password = ? WHERE nick = ? AND password = ?'
+            parameters = (new_nick, new_pass, nick_, pass_)
+            cur.execute(sql, parameters)
+
             self._logger.info(msg='Successfully updated the user!')
             self._conn.commit()
         except Error as e:
@@ -73,10 +73,10 @@ class BLLOps:
     def delete(self, nick_: str, pass_: str) -> type(None):
         cur = self._conn.cursor()
         try:
-            cur.execute(
-                sql='DELETE FROM login WHERE nick = ? AND password = ?',
-                parameters=(nick_, pass_)
-            )
+            sql = 'DELETE FROM login WHERE nick = ? AND password = ?'
+            parameters = (nick_, pass_)
+            cur.execute(sql, parameters)
+
             self._logger.info(msg='Successfully deleted the user!')
             self._conn.commit()
         except Exception as e:
