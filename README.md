@@ -16,7 +16,7 @@ Thanks for testing :smirk:
 - William ~ [@Vieiraork][william-ref]
 - Nádio ~ [@Devwarlt][nadio-ref]
 
-[william-ref]: https://github.com/WilliamVie
+[william-ref]: https://github.com/Vieiraork
 [nadio-ref]: https://github.com/Devwarlt
 
 [python-language-badge]: https://img.shields.io/badge/Python-3.8.3-blue?logo=python&style=plastic
