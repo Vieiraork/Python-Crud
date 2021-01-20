@@ -13,7 +13,7 @@ This is my first CRUD application using OOP. If you willing to help us, must fol
 Thanks for testing :smirk:
 
 ### Contributors
-- William ~ [@WilliamVie][william-ref]
+- William ~ [@Vieiraork][william-ref]
 - Nádio ~ [@Devwarlt][nadio-ref]
 
 [william-ref]: https://github.com/WilliamVie
