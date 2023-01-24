@@ -1,4 +1,4 @@
-# Python-CRUD [!Python CI](https://github.com/WilliamVie/Python-Crud/workflows/Python%20CI/badge.svg) [![license-badge]][license]
+# Python-CRUD [Python CI](https://github.com/WilliamVie/Python-Crud/workflows/Python%20CI/badge.svg) [![license-badge]][license]
 My first CRUD application using Python 3.
 
 ## Languages
